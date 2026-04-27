@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AceCom - Premium Electronics & Laptops</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <p>Free shipping on orders over Rs. 50,000 | Use code ACECOM20 for 20% off</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">AceCom</a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <a href="login.html" class="nav-icon auth-link" title="Login">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+                <div class="user-menu" style="display:none;">
+                    <span class="user-name nav-icon" style="color:white;font-size:13px;"></span>
+                    <button class="nav-icon" onclick="signOut()" title="Logout">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button class="nav-icon cart-icon" id="cart-btn" onclick="window.location.href='cart.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+            </div>
+
+            <button class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-panel" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200&h=800&fit=crop');">
+            <div class="hero-content">
+                <h1>Professional Excellence</h1>
+                <p>Premium business laptops for your work</p>
+                <button class="btn btn-hero" onclick="window.location.href='shop.html'">Shop Business</button>
+            </div>
+        </div>
+        <div class="hero-panel" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&h=800&fit=crop');">
+            <div class="hero-content">
+                <h1>Gaming Unleashed</h1>
+                <p>Ultra-performance gaming laptops</p>
+                <button class="btn btn-hero" onclick="window.location.href='shop.html'">Shop Gaming</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <section class="features-strip">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <h3>Secure Shopping</h3>
+                    <p>SSL encrypted transactions</p>
+                </div>
+                <div class="feature-item">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.98 2.98l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m-2.98-2.98l4.24-4.24M19.78 19.78l-4.24-4.24m-2.98-2.98l-4.24-4.24"></path>
+                    </svg>
+                    <h3>Fast Shipping</h3>
+                    <p>Free delivery on orders above Rs. 50,000</p>
+                </div>
+                <div class="feature-item">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer service</p>
+                </div>
+                <div class="feature-item">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11l3 3L22 4"></path>
+                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3>Warranty</h3>
+                    <p>1-year extended warranty available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Welcome to AceCom</h2>
+            <p class="section-subtitle">Your trusted destination for premium laptops and electronics</p>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6; color: #666;">
+                At AceCom, we believe that technology should be accessible, reliable, and of the highest quality.
+                Since our establishment, we've been committed to providing customers with a curated selection of
+                the latest laptops, gadgets, and accessories from world-renowned brands. Whether you're a professional,
+                gamer, or student, we have the perfect device for your needs.
+            </p>
+        </div>
+    </section>
+
+    <!-- This Week's Picks -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">This Week's Picks</h2>
+            <p class="section-subtitle">Featured products handpicked for you</p>
+            <div class="product-grid">
+                <!-- ASUS ROG Strix G16 -->
+                <div class="product-card" onclick="window.location.href='product.html?id=1'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=500&h=400&fit=crop" alt="ASUS ROG Strix G16">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">ASUS ROG Strix G16</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 410,000.00</span>
+                            <span class="product-price">Rs. 372,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(1, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- HP Victus 15-fa1082wm -->
+                <div class="product-card" onclick="window.location.href='product.html?id=2'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&h=400&fit=crop" alt="HP Victus 15-fa1082wm">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">HP Victus 15-fa1082wm</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 315,000.00</span>
+                            <span class="product-price">Rs. 281,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(2, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Lenovo Yoga 7 2-in-1 -->
+                <div class="product-card" onclick="window.location.href='product.html?id=3'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&h=400&fit=crop" alt="Lenovo Yoga 7 2-in-1">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Lenovo Yoga 7 2-in-1</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 355,000.00</span>
+                            <span class="product-price">Rs. 320,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(3, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Dell XPS 15 9530 -->
+                <div class="product-card" onclick="window.location.href='product.html?id=4'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&h=400&fit=crop" alt="Dell XPS 15 9530">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dell XPS 15 9530</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 490,000.00</span>
+                            <span class="product-price">Rs. 445,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(4, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- ASUS Vivobook R1502V -->
+                <div class="product-card" onclick="window.location.href='product.html?id=5'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&h=400&fit=crop" alt="ASUS Vivobook R1502V">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">ASUS Vivobook R1502V</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 260,000.00</span>
+                            <span class="product-price">Rs. 232,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(5, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- HP OmniBook 5 Flip -->
+                <div class="product-card" onclick="window.location.href='product.html?id=6'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=400&fit=crop" alt="HP OmniBook 5 Flip">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">HP OmniBook 5 Flip</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 280,000.00</span>
+                            <span class="product-price">Rs. 255,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(6, 1)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gadgets for Everyday Use -->
+    <section class="section section-grey">
+        <div class="container">
+            <h2 class="section-title">Gadgets for Everyday Use</h2>
+            <p class="section-subtitle">Essential accessories to enhance your productivity</p>
+            <div class="product-grid">
+                <!-- Armageddon Shield 7 Backpack -->
+                <div class="product-card" onclick="window.location.href='product.html?id=12'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=400&fit=crop" alt="Armageddon Shield 7 Backpack">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Armageddon Shield 7 Backpack</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 12,000.00</span>
+                            <span class="product-price">Rs. 8,500.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(12, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Gaming Mouse RGB Pro -->
+                <div class="product-card" onclick="window.location.href='product.html?id=13'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=400&fit=crop" alt="Gaming Mouse RGB Pro">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Gaming Mouse RGB Pro</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 6,000.00</span>
+                            <span class="product-price">Rs. 4,500.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(13, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Mechanical Keyboard TKL -->
+                <div class="product-card" onclick="window.location.href='product.html?id=14'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&h=400&fit=crop" alt="Mechanical Keyboard TKL">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Mechanical Keyboard TKL</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 15,000.00</span>
+                            <span class="product-price">Rs. 12,500.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(14, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- USB-C Hub 7-in-1 -->
+                <div class="product-card" onclick="window.location.href='product.html?id=15'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=500&h=400&fit=crop" alt="USB-C Hub 7-in-1">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">USB-C Hub 7-in-1</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 8,500.00</span>
+                            <span class="product-price">Rs. 6,800.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(15, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Laptop Cooling Pad -->
+                <div class="product-card" onclick="window.location.href='product.html?id=16'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=500&h=400&fit=crop" alt="Laptop Cooling Pad">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Laptop Cooling Pad</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 7,000.00</span>
+                            <span class="product-price">Rs. 5,500.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(16, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Extra space for grid alignment -->
+                <div class="product-card" style="visibility: hidden;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Laptops for Gaming -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Laptops for Gaming</h2>
+            <p class="section-subtitle">Experience ultimate gaming performance</p>
+            <div class="product-grid">
+                <!-- ASUS ROG Strix G16 -->
+                <div class="product-card" onclick="window.location.href='product.html?id=1'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=500&h=400&fit=crop" alt="ASUS ROG Strix G16">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">ASUS ROG Strix G16</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 410,000.00</span>
+                            <span class="product-price">Rs. 372,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(1, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- HP Victus 15-fa1082wm -->
+                <div class="product-card" onclick="window.location.href='product.html?id=2'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&h=400&fit=crop" alt="HP Victus 15-fa1082wm">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">HP Victus 15-fa1082wm</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 315,000.00</span>
+                            <span class="product-price">Rs. 281,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(2, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- MSI Thin 15 B13VE -->
+                <div class="product-card" onclick="window.location.href='product.html?id=7'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&h=400&fit=crop" alt="MSI Thin 15 B13VE">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">MSI Thin 15 B13VE</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 340,000.00</span>
+                            <span class="product-price">Rs. 305,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(7, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- ASUS TUF Gaming FX607V -->
+                <div class="product-card" onclick="window.location.href='product.html?id=8'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?w=500&h=400&fit=crop" alt="ASUS TUF Gaming FX607V">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">ASUS TUF Gaming FX607V</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 399,000.00</span>
+                            <span class="product-price">Rs. 372,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(8, 1)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Laptops for Entertainment -->
+    <section class="section section-grey">
+        <div class="container">
+            <h2 class="section-title">Laptops for Entertainment</h2>
+            <p class="section-subtitle">Slim, stylish, and powerful for multimedia</p>
+            <div class="product-grid">
+                <!-- ASUS Vivobook R1502V -->
+                <div class="product-card" onclick="window.location.href='product.html?id=5'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&h=400&fit=crop" alt="ASUS Vivobook R1502V">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">ASUS Vivobook R1502V</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 260,000.00</span>
+                            <span class="product-price">Rs. 232,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(5, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Lenovo IdeaPad Slim 3 -->
+                <div class="product-card" onclick="window.location.href='product.html?id=9'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=500&h=400&fit=crop" alt="Lenovo IdeaPad Slim 3">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Lenovo IdeaPad Slim 3</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 199,000.00</span>
+                            <span class="product-price">Rs. 178,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(9, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Dell Inspiron 16 5630 -->
+                <div class="product-card" onclick="window.location.href='product.html?id=10'">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&h=400&fit=crop" alt="Dell Inspiron 16 5630">
+                        <div class="product-overlay">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dell Inspiron 16 5630</h3>
+                        <div class="product-pricing">
+                            <span class="old-price">Rs. 295,000.00</span>
+                            <span class="product-price">Rs. 265,000.00</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(10, 1)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Extra space for grid alignment -->
+                <div class="product-card" style="visibility: hidden;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Strip -->
+    <section class="brands-strip">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Trusted Brands</h2>
+            <div class="brands-grid">
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x60?text=ASUS" alt="ASUS">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x60?text=HP" alt="HP">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Dell" alt="Dell">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Lenovo" alt="Lenovo">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x60?text=MSI" alt="MSI">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Apple" alt="Apple">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">AceCom</div>
+                    <p>Your trusted destination for premium electronics and laptops since 2020.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Gaming Laptops</a></li>
+                        <li><a href="#">Business Laptops</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Special Offers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AceCom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scroll-top" title="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/supabase-config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

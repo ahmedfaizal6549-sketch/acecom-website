@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Acecom Lanka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="announcement-bar">
+    <div class="container"><i class="fas fa-phone-alt"></i> NEED QUICK HELP? CALL OR WHATSAPP 077 390 4550</div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo"><i class="fas fa-laptop"></i> ACECOM LANKA</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <a href="login.html" class="nav-icon auth-link" title="Login"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+        <div class="user-menu" style="display:none;"><span class="user-name nav-icon" style="color:white;font-size:13px;"></span><button class="nav-icon" onclick="signOut()" title="Logout"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg></button></div>
+        <a href="shop.html" class="nav-icon"><i class="fas fa-search"></i></a>
+        <a href="cart.html" class="nav-icon cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count" class="cart-badge">0</span></a>
+      </div>
+      <button class="hamburger" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="index.html">Home</a> / <span>About Us</span>
+    </div>
+  </div>
+
+  <!-- Hero Banner -->
+  <section class="about-hero">
+    <div class="about-hero-overlay"></div>
+    <div class="container">
+      <h1>About Acecom Lanka</h1>
+      <p>Your Trusted Technology Partner Since 2015</p>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="section about-story">
+    <div class="container">
+      <h2>Our Story</h2>
+      <p>Since 2015, Acecom Lanka has been Sri Lanka's premier destination for premium laptops and technology products. Located at the heart of Colombo's Majestic City, we have built a reputation as the most trusted and authorized retailer of top laptop brands in the country.</p>
+      <p>Our journey is rooted in a simple mission: to make quality technology accessible to everyone while providing unparalleled customer service. From individual customers to corporate clients, we've served over 5,000 happy customers who trust us for their technology needs.</p>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section why-choose-us">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <i class="fas fa-store"></i>
+          <h3>Trusted Retailer</h3>
+          <p>Authorized dealer for top laptop brands</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-users"></i>
+          <h3>Expert Team</h3>
+          <p>Knowledgeable staff to help you choose</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-gem"></i>
+          <h3>Quality Products</h3>
+          <p>Only genuine, brand-new products</p>
+        </div>
+        <div class="why-card">
+          <i class="fas fa-heart"></i>
+          <h3>Customer First</h3>
+          <p>Your satisfaction is our priority</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">5000+</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Brands Available</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Year Warranty</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24h</div>
+          <div class="stat-label">Same Day Delivery</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container" style="text-align: center;">
+      <h2>Ready to find your perfect laptop?</h2>
+      <p>Browse our extensive collection of premium laptops from trusted brands.</p>
+      <a href="shop.html" class="btn btn-primary btn-lg">Browse Our Collection</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-logo"><i class="fas fa-laptop"></i> ACECOM LANKA</h3>
+          <p>Trusted and Authorized Laptop retailer of top laptop brands in Sri Lanka.</p>
+          <p><i class="fas fa-map-marker-alt"></i> Location: Majestic City, Colombo</p>
+          <p><i class="fas fa-phone"></i> Phone: 077 390 4550</p>
+        </div>
+        <div class="footer-col">
+          <h4>ABOUT ACECOM</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Track your Order</a></li>
+            <li><a href="#">Warranty and Services</a></li>
+            <li><a href="#">Repair and Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>QUICK LINKS</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Delivery and Returns</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Acecom Lanka. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scroll-top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+  <div id="toast-container" class="toast-container"></div>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Products | AceCom Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container">
+      <i class="fas fa-phone"></i> NEED QUICK HELP? CALL OR WHATSAPP 077 390 4550
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-laptop"></i> ACECOM LANKA
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="shop.html" class="nav-link active">Shop</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-icons">
+        <a href="login.html" class="nav-icon auth-link" title="Login"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+        <div class="user-menu" style="display:none;"><span class="user-name nav-icon" style="color:white;font-size:13px;"></span><button class="nav-icon" onclick="signOut()" title="Logout"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg></button></div>
+        <a href="shop.html" class="nav-icon" title="Search">
+          <i class="fas fa-search"></i>
+        </a>
+        <a href="cart.html" class="nav-icon cart-icon" title="Shopping Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="index.html">Home</a> <span>/</span> <span>Shop</span>
+    </div>
+  </div>
+
+  <!-- Shop Section -->
+  <section class="section shop-section">
+    <div class="container">
+      <h1 class="page-title">Shop All Products</h1>
+
+      <!-- Filters Bar -->
+      <div class="shop-filters">
+        <div class="filter-group">
+          <label for="category-filter">Category</label>
+          <select id="category-filter" class="filter-select">
+            <option value="all">All Categories</option>
+            <option value="gaming">Gaming</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="accessories">Accessories</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="brand-filter">Brand</label>
+          <select id="brand-filter" class="filter-select">
+            <option value="all">All Brands</option>
+            <option value="ASUS">ASUS</option>
+            <option value="HP">HP</option>
+            <option value="Dell">Dell</option>
+            <option value="Lenovo">Lenovo</option>
+            <option value="MSI">MSI</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sort-filter">Sort By</label>
+          <select id="sort-filter" class="filter-select">
+            <option value="">Default</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name">Name: A-Z</option>
+          </select>
+        </div>
+        <div class="filter-group search-group">
+          <label for="search-input">Search</label>
+          <div class="search-wrapper">
+            <input type="text" id="search-input" class="filter-input" placeholder="Search products...">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Count -->
+      <div class="results-info">
+        <span id="results-count">Showing 16 products</span>
+      </div>
+
+      <!-- Product Grid - populated by JavaScript -->
+      <div class="product-grid" id="product-grid">
+        <!-- Products rendered by JS -->
+      </div>
+
+      <!-- No Results -->
+      <div class="no-results" id="no-results" style="display:none;">
+        <i class="fas fa-search"></i>
+        <h3>No products found</h3>
+        <p>Try adjusting your filters or search terms</p>
+        <a href="shop.html" class="btn btn-primary">Browse All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: About -->
+        <div class="footer-column">
+          <h3 class="footer-logo">
+            <i class="fas fa-laptop"></i> ACECOM LANKA
+          </h3>
+          <p class="footer-description">
+            Your trusted destination for premium laptops and technology solutions in Sri Lanka.
+            We bring you the latest devices from world-leading brands with exceptional customer service.
+          </p>
+          <div class="footer-contact">
+            <p><strong>Location:</strong> Majestic City, Colombo</p>
+            <p><strong>Phone:</strong> 077 390 4550</p>
+          </div>
+        </div>
+
+        <!-- Column 2: About Links -->
+        <div class="footer-column">
+          <h4 class="footer-heading">ABOUT ACECOM</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Track your Order</a></li>
+            <li><a href="#">Warranty and Services</a></li>
+            <li><a href="#">Repair and Services</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Quick Links -->
+        <div class="footer-column">
+          <h4 class="footer-heading">QUICK LINKS</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Delivery and Returns</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="footer-social">
+        <a href="#" class="social-icon" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="social-icon" title="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-icon" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2024 Acecom Lanka. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scroll-top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/supabase-config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
